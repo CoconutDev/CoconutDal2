@@ -97,7 +97,7 @@ namespace CoconutDal.Oracle
             }
 
             // 3 valid cases: SP + Params, SP + Values, Text + Params
-            if (parameters.Count(p => p is OracleParameter) == parameters.Length)
+            if (parameters.Count(p => p is DbParameter) == parameters.Length)
             {
                 // for SP + Params & Text + Params
                 command.Parameters.AddRange(parameters);
@@ -111,7 +111,7 @@ namespace CoconutDal.Oracle
                 }
 
                 int index = 0;
-                foreach (OracleParameter parameter in command.Parameters)
+                foreach (DbParameter parameter in command.Parameters)
                 {
                     if (parameter.Direction == ParameterDirection.Input ||
                          parameter.Direction == ParameterDirection.InputOutput)

@@ -98,7 +98,7 @@ namespace CoconutDal.MySql
             }
 
             // 3 valid cases: SP + Params, SP + Values, Text + Params
-            if (parameters.Count(p => p is MySqlParameter) == parameters.Length)
+            if (parameters.Count(p => p is DbParameter) == parameters.Length)
             {
                 // for SP + Params & Text + Params
                 command.Parameters.AddRange(parameters);
@@ -112,7 +112,7 @@ namespace CoconutDal.MySql
                 }
 
                 int index = 0;
-                foreach (MySqlParameter parameter in command.Parameters)
+                foreach (DbParameter parameter in command.Parameters)
                 {
                     if (parameter.Direction == ParameterDirection.Input ||
                          parameter.Direction == ParameterDirection.InputOutput)
